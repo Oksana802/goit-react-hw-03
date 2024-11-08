@@ -1,0 +1,19 @@
+.filter {
+  width: 40vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  gap: 5px;
+}
+
+.span {
+}
+.input {
+  min-height: 30px;
+  border-radius: 4px;
+  box-shadow: 1px 1px grey;
+  border: 1px solid gray;
+  outline: transparent;
+  padding: 0 10px;
+  font-size: 20px;
+}
