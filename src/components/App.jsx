@@ -4,10 +4,18 @@ import ContactForm from "./ContactForm/ContactForm";
 import ContactList from "./ContactList/ContactList";
 import SearchBox from "./SearchBox/SearchBox";
 import usersCatalog from "./userCard.json";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const App = () => {
-  const [users, setUsers] = useState(usersCatalog);
+  const [users, setUsers] = useState(() => {
+    const savedUsers = localStorage.getItem("users");
+    return savedUsers ? JSON.parse(savedUsers) : usersCatalog;
+  });
+
+  useEffect(() => {
+    localStorage.setItem("users", JSON.stringify(users));
+  }, [users]);
+
   const [filter, setFilter] = useState("");
 
   const handleAddUser = (newUsers) => {

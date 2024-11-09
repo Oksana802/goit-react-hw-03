@@ -2,19 +2,21 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import s from "./ContactForm.module.css";
 import { nanoid } from "nanoid";
 import * as Yup from "yup";
+
 const ContactForm = ({ onAddUser }) => {
   const initialValues = {
     name: "",
     number: "",
   };
-  const re = /^[0-9\-]+$/;
+  const re = /^\d{10}$/;
   const OrderSchema = Yup.object({
     name: Yup.string()
       .min(3, "мінімальна кількість символів - 3")
       .max(50, "максимальна кількість символів - 50")
       .required("Це поле є обов'язковим"),
     number: Yup.string()
-      .matches(re, "Тільки цифри та дефіси")
+      .matches(re, "Тільки цифри -10 символів  ")
+      .max(10, "максимальна кількість символів - 10")
       .required("Це поле є обов'язковим"),
   });
 
@@ -49,7 +51,7 @@ const ContactForm = ({ onAddUser }) => {
               className={s.input}
               type="text"
               name="number"
-              placeholder="Номер телефону може містити тільки цифри та дефіси"
+              placeholder="Номер телефону може містити тільки цифри"
             />
             <ErrorMessage name="number" component="span" className={s.error} />
           </label>

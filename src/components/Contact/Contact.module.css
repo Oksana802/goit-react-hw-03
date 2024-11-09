@@ -1,3 +1,7 @@
+.box {
+  flex-basis: calc((100% - 3 * 24px) / 4);
+}
+
 .item {
   display: flex;
   justify-content: start;
@@ -8,6 +12,12 @@
   border: 1px solid gray;
 }
 
+.icon {
+  margin-right: 8px;
+
+  width: 16px;
+  height: 16px;
+}
 .btn {
   height: 10%;
   padding: 10px;
